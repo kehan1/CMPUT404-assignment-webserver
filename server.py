@@ -36,6 +36,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
     
     def handle(self):
         self.data = self.request.recv(1024).strip()
+        print ("Got a request of: %s\n" % self.data)
         #decode https://stackoverflow.com/questions/606191/convert-bytes-to-a-string
         self.data = self.data.decode('utf-8')
         splitData = self.data.split()
@@ -63,6 +64,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
                 self.request.sendall(bytearray("404 Not Found \r\n",'utf-8'))
                 return
         self.request.sendall(bytearray("200 OK\r\n",'utf-8'))
+        
         if splitData[0]=="GET":             
             if (".html" not in basePath) and (".css" not in basePath):
                 if basePath[-1] != "/":
