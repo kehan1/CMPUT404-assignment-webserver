@@ -18,6 +18,7 @@ server.py contains contributions from:
 * Eddie Antonio Santos
 * Jackson Z Chang
 * Mandy Meindersma 
+* kehan Wang
 
 But the server.py example is derived from the python documentation
 examples thus some of the code is Copyright © 2001-2013 Python
@@ -31,4 +32,4 @@ Reference:
 	By Aaron Maenpaa, licensed under Creative Commons Attribution-Share Alike, https://stackoverflow.com/questions/606191/convert-bytes-to-a-string
 	By wim, licensed under Creative Commons Attribution-Share Alike, https://stackoverflow.com/questions/13503610/how-can-i-get-the-path-of-my-python-script
 	By sherbang, licensed under Creative Commons Attribution-Share Alike, https://stackoverflow.com/questions/51520/how-to-get-an-absolute-file-path-in-python
-	By python document, https://docs.python.org/2/library/mimetypes.html
+	By Blender, licensed under Creative Commons Attribution-Share Alike, https://stackoverflow.com/questions/14412211/get-the-mimetype-of-a-file-with-python

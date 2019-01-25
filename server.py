@@ -3,6 +3,7 @@ import socketserver
 import os
 import mimetypes
 
+
 # Copyright 2013 Abram Hindle, Eddie Antonio Santos
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,11 +38,11 @@ class MyWebServer(socketserver.BaseRequestHandler):
     def handle(self):
         self.data = self.request.recv(1024).strip()
         print ("Got a request of: %s\n" % self.data)
-        #decode https://stackoverflow.com/questions/606191/convert-bytes-to-a-string
+        #decode by Aaron Maenpaa, licensed under Creative Commons Attribution-Share Alike, https://stackoverflow.com/questions/606191/convert-bytes-to-a-string
         self.data = self.data.decode('utf-8')
         splitData = self.data.split()
 
-        #get_path: https://stackoverflow.com/questions/13503610/how-can-i-get-the-path-of-my-python-script
+        #get_path, by wim, licensed under Creative Commons Attribution-Share Alike,https://stackoverflow.com/questions/13503610/how-can-i-get-the-path-of-my-python-script
         dirPath = os.path.dirname(os.path.realpath(__file__))
         basePath = "/www"+ splitData[1]
         path = dirPath + basePath
@@ -49,7 +50,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
         
         path1 = dirPath + "/www"
         if os.path.exists(path):
-            #get abs path https://stackoverflow.com/questions/51520/how-to-get-an-absolute-file-path-in-python
+            #get abs path, by sherbang, licensed under Creative Commons Attribution-Share Alike,  https://stackoverflow.com/questions/51520/how-to-get-an-absolute-file-path-in-python
             path2 = os.path.abspath(path)
         else:
             self.request.sendall(bytearray("404 Not Found \r\n",'utf-8'))
@@ -79,7 +80,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
 
             self.request.sendall(bytearray("200 OK\r\n",'utf-8'))         
             path = dirPath + basePath
-            #mimetype guess: https://docs.python.org/2/library/mimetypes.html
+            #mimetype guess, by Blender, licensed under Creative Commons Attribution-Share Alike, https://stackoverflow.com/questions/14412211/get-the-mimetype-of-a-file-with-python
             textType = mimetypes.guess_type(basePath)[0]
             self.request.sendall(bytearray("Content-Type: "+ textType +";\r\n", 'utf-8'))
             self.request.sendall(bytearray("\r\n",'utf-8'))
