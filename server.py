@@ -36,7 +36,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
     
     def handle(self):
         self.data = self.request.recv(1024).strip()
-        print ("Got a request of: %s\n" % self.data)
+        #print ("Got a request of: %s\n" % self.data)
         #decode https://stackoverflow.com/questions/606191/convert-bytes-to-a-string
         self.data = self.data.decode('utf-8')
         splitData = self.data.split()
@@ -63,15 +63,21 @@ class MyWebServer(socketserver.BaseRequestHandler):
             if path_split2[i] != path_split1[i] :
                 self.request.sendall(bytearray("404 Not Found \r\n",'utf-8'))
                 return
-        self.request.sendall(bytearray("200 OK\r\n",'utf-8'))
+        #self.request.sendall(bytearray("200 OK\r\n",'utf-8'))
         
         if splitData[0]=="GET":             
             if (".html" not in basePath) and (".css" not in basePath):
-                if basePath[-1] != "/":
+                if basePath[-1] == "/":
                     basePath = basePath+"index.html"
+                    
                 else:
+                    self.request.sendall(bytearray("301 Moved",'utf-8'))
                     basePath = basePath+"/index.html"
-             
+                    path = dirPath + basePath
+                    self.request.sendall(bytearray("Location: "+path, 'utf-8'))
+                    return     
+
+            self.request.sendall(bytearray("200 OK\r\n",'utf-8'))         
             path = dirPath + basePath
             #mimetype guess: https://docs.python.org/2/library/mimetypes.html
             textType = mimetypes.guess_type(basePath)[0]
