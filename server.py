@@ -46,8 +46,8 @@ class MyWebServer(socketserver.BaseRequestHandler):
         basePath = "/www"+ splitData[1]
         path = dirPath + basePath
         self.request.sendall(bytearray("HTTP/1.1 ",'utf-8'))
-        path1 = os.getcwd()
-        path1 = path1+"/www"
+        #path1 = os.getcwd()
+        path1 = dirPath + "/www"
         if os.path.exists(path):
             #get abs path https://stackoverflow.com/questions/51520/how-to-get-an-absolute-file-path-in-python
             path2 = os.path.abspath(path)
