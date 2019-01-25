@@ -37,6 +37,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
     def handle(self):
         mimetypes.init()
         self.data = self.request.recv(1024).strip()
+        #decode https://stackoverflow.com/questions/606191/convert-bytes-to-a-string
         self.data = self.data.decode('utf-8')
         splitData = self.data.split()
 
