@@ -26,9 +26,14 @@ Software Foundation; All Rights Reserved under the PSF license (GPL
 compatible) http://docs.python.org/2/library/socketserver.html
 
 
-Collaborator: I talked about how to check the absolute path about test_get_group (with /../) with Xinrui Lu(xinrui7).
 
-Reference:
+
+Collaborator and Reference:
+========================
+
+	Collaborator: I talked about how to check the absolute path about test_get_group (with /../) with Xinrui Lu(xinrui7).
+
+
 	By Aaron Maenpaa, licensed under Creative Commons Attribution-Share Alike, https://stackoverflow.com/questions/606191/convert-bytes-to-a-string
 	By wim, licensed under Creative Commons Attribution-Share Alike, https://stackoverflow.com/questions/13503610/how-can-i-get-the-path-of-my-python-script
 	By sherbang, licensed under Creative Commons Attribution-Share Alike, https://stackoverflow.com/questions/51520/how-to-get-an-absolute-file-path-in-python
