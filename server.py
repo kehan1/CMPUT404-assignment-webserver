@@ -76,7 +76,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
             textType = mimetypes.guess_type(basePath)[0]
             self.request.sendall(bytearray("Content-Type: "+ textType +";\r\n", 'utf-8'))
             self.request.sendall(bytearray("\r\n",'utf-8'))
-            openFile = open(path,"r")  
+            openFile = open(path)  
             self.request.sendall(bytearray(openFile.read(),'utf-8'))
             openFile.close()  
         else:
