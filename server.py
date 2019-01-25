@@ -71,7 +71,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
                     basePath = basePath+"index.html"
                     
                 else:
-                    self.request.sendall(bytearray("301 Moved",'utf-8'))
+                    self.request.sendall(bytearray("301 Moved \r\n",'utf-8'))
                     basePath = basePath+"/index.html"
                     path = dirPath + basePath
                     self.request.sendall(bytearray("Location: "+path, 'utf-8'))
